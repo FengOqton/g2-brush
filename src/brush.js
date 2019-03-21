@@ -350,7 +350,9 @@ class Brush {
     const { offsetX, offsetY } = ev;
     const canvasDOM = canvas.get('canvasDOM');
     canvasDOM.style.cursor = 'default';
-
+    if(!startPoint) { // mousedown not happened in canvas area, do nothing.
+      return;
+    }
     if (Math.abs(startPoint.x - offsetX) <= 1 && Math.abs(startPoint.y - offsetY) <= 1) { // 防止点击事件
       me.brushing = false;
       me.dragging = false;
